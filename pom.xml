@@ -57,6 +57,12 @@
             <scope>test</scope>
         </dependency>
 
+
+        <dependency>
+            <groupId>jakarta.persistence</groupId>
+            <artifactId>jakarta.persistence-api</artifactId>
+            <version>3.0.0</version>
+        </dependency>
         <!-- Зависимость для Kafka -->
         <dependency>
             <groupId>org.springframework.kafka</groupId>
@@ -71,11 +77,7 @@
             <version>3.0.0</version>
         </dependency>
     </dependencies>
-    <dependency>
-        <groupId>io.springfox</groupId>
-        <artifactId>springfox-boot-starter</artifactId>
-        <version>3.0.0</version>
-    </dependency>
+
     <build>
         <plugins>
             <plugin>

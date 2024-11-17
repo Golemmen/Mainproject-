@@ -11,6 +11,25 @@ services:
     networks:
       - microwave-network
 
+  zookeeper:
+    image: wurstmeister/zookeeper:latest
+    ports:
+      - "2181:2181"
+    networks:
+      - microwave-network
+
+  kafka:
+    image: wurstmeister/kafka:latest
+    ports:
+      - "9092:9092"
+    networks:
+      - microwave-network
+    environment:
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://localhost:9092
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+    depends_on:
+      - zookeeper
+
   app:
     build: .
     container_name: microwave-app
@@ -18,6 +37,7 @@ services:
       - "8080:8080"
     depends_on:
       - mysql
+      - kafka
     networks:
       - microwave-network
 
